@@ -23,8 +23,14 @@ if __name__ == "__main__":
     ### 三维数组（可以理解为二维 Table 中的样本特征全为一维 List）
     arr3 = np.array(
         [
-            [[1, 2], [3, 4]],
-            [[5, 6], [7, 8]],
+            [
+                [1, 2],
+                [3, 4],
+            ],
+            [
+                [5, 6],
+                [7, 8],
+            ],
         ]
     )
     print(f"三维数组:\n{arr3}")
@@ -81,8 +87,8 @@ if __name__ == "__main__":
 
     ## 2.1 基本索引
     print(f"第一行第二列: {arr[0, 1]}")  # 注意：索引从0开始
-    print(f"最后一行: {arr[2, :]}")
-    print(f"最后一列: {arr[:, 3]}")
+    print(f"最后一行: {arr[2, :]}")  # [9, 10, 11, 12]
+    print(f"最后一列: {arr[:, 3]}")  # [4, 8, 12]
 
     ## 2.2 切片操作
     print(f"前两行: \n{arr[0:2, :]}")
@@ -94,8 +100,8 @@ if __name__ == "__main__":
     print(f"倒数第二列: {arr[:, -2]}")
 
     ## 2.4 布尔索引
-    print(f"大于10的元素:\n{arr[arr > 10]}")
-    print(f"第一列大于5的行:\n{arr[arr[:, 0] > 5, :]}")
+    print(f"大于10的元素:{arr[arr > 10]}")
+    print(f"第一列大于5的行:{arr[arr[:, 0] > 5, :]}")
 
     # * =============== 3. ndarray 操作 ==============
 
@@ -118,12 +124,32 @@ if __name__ == "__main__":
 
     # 增加维度
     expanded = np.expand_dims(arr, axis=0)  # 在第0维增加一个维度
+    print(f"扩展维度前形状:{arr.shape}")
     print(f"扩展维度后形状: {expanded.shape}")
+    print(f"扩展维度前数组:{arr}")
+    print(f"扩展维度后数组:\n{expanded}")
+
+    # 压缩维度
+    squeezed = np.squeeze(expanded)  # 去掉所有单维度条目
+    print(f"压缩维度前形状:{expanded.shape}")
+    print(f"压缩维度后形状: {squeezed.shape}")
+    print(f"压缩维度前数组:\n{expanded}")
+    print(f"压缩维度后数组:{squeezed}")
 
     ## 3.2 数组连接
 
-    a = np.array([[1, 2], [3, 4]])
-    b = np.array([[5, 6], [7, 8]])
+    a = np.array(
+        [
+            [1, 2],
+            [3, 4],
+        ]
+    )
+    b = np.array(
+        [
+            [5, 6],
+            [7, 8],
+        ]
+    )
 
     # 垂直连接（按行）
     vertical = np.vstack((a, b))
@@ -135,7 +161,7 @@ if __name__ == "__main__":
 
     # 沿指定轴连接
     concatenated = np.concatenate((a, b), axis=1)  # axis=1表示沿列方向
-    print(f"连接结果:\n{concatenated}")
+    print(f"沿列（axis=1）连接结果:\n{concatenated}")
 
     ## 3.3 数组拆分 (分割)
 
@@ -153,9 +179,7 @@ if __name__ == "__main__":
 
     ## 3.4 数组复制
     original = np.array([1, 2, 3])
-    shallow_copy = (
-        original.view()
-    )  # 浅复制，等同于 shallow_copy = original，相当于指针引用
+    shallow_copy = original.view()  # 浅复制，等同于 shallow_copy = original
     deep_copy = original.copy()  # 深复制
     original[0] = 10
     print(f"原始数组: {original}")  # [10, 2, 3]
@@ -289,7 +313,7 @@ if __name__ == "__main__":
     print(f"唯一值: {unique_vals}")
 
     ## 计数
-    counts = np.bincount(arr)
+    counts = np.bincount(arr)  # 计算非负整数数组中每个值的出现次数
     print(f"计数: {counts}")
 
     ## 随机选择
@@ -353,7 +377,7 @@ if __name__ == "__main__":
     std_axis0 = np.std(X, axis=0)
     print(f"每列的标准差:{std_axis0}")
 
-    X_standardized = (X - mean_axis0) / std_axis0  # (x - mean) / std
+    X_standardized = (X_centered) / std_axis0  # (x - mean) / std
     print(f"特征标准化后的结果:\n{X_standardized}")
 
     print(f"标准化后每列的均值:{np.mean(X_standardized, axis=0)}")  # 接近 0
