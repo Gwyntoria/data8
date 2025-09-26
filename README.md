@@ -18,6 +18,10 @@ Data Science 学习笔记，基于 UC Berkeley 的 Data 8 和 Data 100 课程。
 - 数据可视化
 - 统计分析
 
+## 使用说明
+
+- `python`脚本必须在`data8`目录下运行，例如`python py/lec01.py`，否则会出现路径索引错误。
+
 ## 参考书目
 
 1. [Computational and Inferential Thinking: The Foundations of Data Science](https://inferentialthinking.com/chapters/intro.html)
