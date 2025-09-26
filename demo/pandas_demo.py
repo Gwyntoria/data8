@@ -46,8 +46,8 @@ print("\n")
 # *     批量修改行数据可结合 loc 和布尔索引。
 # *     避免直接对筛选结果赋值（链式赋值），推荐使用 loc。
 
-# * 新增和修改都会改变原 DataFrame，除非使用 inplace=False（默认）。
-# * 删除默认返回新 DataFrame，不改变原 df，除非 inplace=True。
+# ! 新增和修改都会改变原 DataFrame，除非使用 inplace=False。
+# ! 删除默认返回新 DataFrame，不改变原 df，除非 inplace=True。
 
 
 print("== 1. Series 与 DataFrame 基础 ==\n")
