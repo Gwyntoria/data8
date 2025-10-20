@@ -22,17 +22,17 @@ nba_sort_by_team = nba.sort_values("team")
 print("NBA DataFrame sorted by team:\n", nba_sort_by_team.head(5))
 print("\n")
 
-# rename columns
+# * rename columns
 nba_renamed = nba.rename(columns={"player": "name", "team": "club"})
 print("NBA DataFrame with renamed columns:\n", nba_renamed.head(5))
 print("\n")
 
-# Specified Rows
+# * Specified Rows
 nba_selected = nba.loc[np.arange(20, 25)]
 print("NBA DataFrame selected rows:\n", nba_selected)
 print("\n")
 
-# Rows Corresponding to a Specified Feature
+# * Rows Corresponding to a Specified Feature
 condition = nba["salary"] > 10
 nba_selected_by_salary = nba[condition]
 print("NBA DataFrame selected by salary:\n", nba_selected_by_salary)
