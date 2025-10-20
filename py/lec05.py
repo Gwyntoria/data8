@@ -7,7 +7,7 @@ import pandas as pd
 
 
 nba = pd.read_csv("data/nba.csv")
-print("NBA DataFrame info:\n", nba.info())
+nba.info()
 print("\n")
 
 print("NBA DataFrame:\n", nba.head(5))
