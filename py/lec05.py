@@ -6,14 +6,15 @@ import numpy as np
 import pandas as pd
 
 
-nba = pd.read_csv("data/nba.csv")
+nba = pd.read_csv("data/nba_salaries.csv")
 nba.info()
 print("\n")
 
 print("NBA DataFrame:\n", nba.head(5))
 print("\n")
 
-nba.columns = nba.columns.str.lower()
+nba = nba.rename(columns={"'15-'16 SALARY": "SALARY"})
+nba.columns = nba.columns.str.strip().str.lower()
 print("NBA DataFrame columns:\n", nba.columns)
 print("\n")
 

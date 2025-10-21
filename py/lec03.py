@@ -74,11 +74,12 @@ print("\n")
 
 # * Example: Salaries in the NBA
 
-nba = pd.read_csv("data/nba.csv")
-print("NBA DataFrame:\n", nba.head())
+nba = pd.read_csv("data/nba_salaries.csv")
+nba.info()
 print("\n")
 
-nba.columns = nba.columns.str.lower()
+nba = nba.rename(columns={"'15-'16 SALARY": "SALARY"})
+nba.columns = nba.columns.str.strip().str.lower()
 print("NBA columns after converting to lowercase:\n", nba.columns)
 print("\n")
 
